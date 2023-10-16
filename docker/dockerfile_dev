@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/devcontainers/python:3.11-bullseye
+
+# Install application
+RUN apt update
+RUN apt -y install python3-pip
+
+# Upgrade pip
+RUN pip install --upgrade pip
+
+# Install development dependencies
+COPY requirements /tmp/requirements
+RUN pip install -r /tmp/requirements/requirements-dev.txt
